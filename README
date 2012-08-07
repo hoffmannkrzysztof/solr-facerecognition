@@ -1,1 +1,14 @@
-empty for now
+Solr-facerecognition module for Solr thumbnail
+This module is trying to find a face on given picture and then crop to this face. If it will fail, the default crop will be use.
+
+Installation:
+pip install -e git://https://github.com/hoffmannkrzysztof/solr-facerecognition.git#egg=solr_facerecognition
+
+Required:
+* django
+* solr-thumbnail
+* cv2 ( opencv2 ) - python binding
+
+Using:
+1. Override `THUMBNAIL_ENGINE` variable in settings and set: `solr_facerecognition.engines.FaceRecognitionEngine`
+2. Use a template tag from solr-thumbnail `{% thumbnail %}` by adding a `facerecognition=1` eg. `{% thumbnail movie.image "100x100" crop="top" facerecognition=1 as im %}`
